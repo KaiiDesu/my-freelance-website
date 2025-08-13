@@ -7,11 +7,23 @@
   import About from './components/about.svelte';
   import Menu from './components/Menu.svelte';
   import SciFiBackground from './components/SciFiBackground.svelte';
+  import CardletMobile from './components/CardletMobile.svelte';
   import { fly } from 'svelte/transition';
+<<<<<<< HEAD
 <<<<<<< HEAD
 </script>
 
 =======
+=======
+  import { base } from '$app/paths';
+  let exampleImg = base + '/example.jpg';
+  let isMobile = false;
+  if (typeof window !== 'undefined') {
+    const checkMobile = () => isMobile = window.innerWidth <= 600;
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+  }
+>>>>>>> ad4a268 (Mobile Accessibility)
 
 // Svelte action for scroll-based fade/translate animation
 function scrollFade(node: HTMLElement, params = { delay: 0 }) {
@@ -48,7 +60,7 @@ function scrollFade(node: HTMLElement, params = { delay: 0 }) {
 
 <svelte:head>
   <title>Homepage | KaiiDesu</title>
-  <link rel="icon" type="image/png" href="/src/lib/assets/logo.png" />
+
 </svelte:head>
 
 
@@ -59,6 +71,7 @@ function scrollFade(node: HTMLElement, params = { delay: 0 }) {
   <main class="text-white flex flex-col items-center justify-center pt-24 relative z-10" in:fly={{ y: 60, duration: 700 }}>
     <Hero />
     <About />
+<<<<<<< HEAD
     <div class="cardlet-container">
       <div class="cardlet-grid">
 <<<<<<< HEAD
@@ -84,9 +97,93 @@ function scrollFade(node: HTMLElement, params = { delay: 0 }) {
 >>>>>>> 2db121b (Initial commit)
           <img src="/src/routes/assets/example.jpg" alt="Example Website 3" class="cardlet-img" />
           <a href="https://example.com" target="_blank" rel="noopener" class="cardlet-btn">Preview</a>
+=======
+    {#if isMobile}
+      <CardletMobile />
+    {:else}
+      <div class="cardlet-container">
+        <div class="cardlet-grid">
+          <div class="cardlet cardlet-hidden" use:scrollFade={{delay: 0}}>
+            <img src={exampleImg} alt="Example Website 1" class="cardlet-img" />
+            <a href="https://example.com" target="_blank" rel="noopener" class="cardlet-btn">Preview</a>
+          </div>
+          <div class="cardlet cardlet-hidden" use:scrollFade={{delay: 350}}>
+            <img src={exampleImg} alt="Example Website 2" class="cardlet-img" />
+            <a href="https://example.com" target="_blank" rel="noopener" class="cardlet-btn">Preview</a>
+          </div>
+          <div class="cardlet cardlet-hidden" use:scrollFade={{delay: 700}}>
+            <img src={exampleImg} alt="Example Website 3" class="cardlet-img" />
+            <a href="https://example.com" target="_blank" rel="noopener" class="cardlet-btn">Preview</a>
+          </div>
+>>>>>>> ad4a268 (Mobile Accessibility)
         </div>
       </div>
-    </div>
+    {/if}
+    <style>
+    html {
+      box-sizing: border-box;
+    }
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+    .cardlet-container {
+      width: 100vw;
+      max-width: 100vw;
+      overflow-x: hidden;
+    }
+    .cardlet-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      width: 100%;
+      min-width: 0;
+      justify-items: center;
+    }
+    @media (max-width: 900px) {
+      .cardlet-grid {
+        gap: 1.2rem;
+      }
+      .cardlet {
+        padding: 0.7rem;
+        font-size: 0.95rem;
+      }
+      .cardlet-img {
+        height: 5.5rem;
+      }
+      .cardlet-container {
+        padding: 1.5rem 0.5rem;
+      }
+    }
+    @media (max-width: 600px) {
+      .cardlet-container {
+        margin-top: 0.7rem;
+        margin-bottom: 0.7rem;
+        padding: 0.5rem 0.1rem;
+      }
+      .cardlet-grid {
+        gap: 0.3rem;
+        width: 100%;
+        min-width: 0;
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .cardlet {
+        width: 100%;
+        max-width: 200px;
+        min-width: 0;
+        padding: 0.3rem;
+        font-size: 0.8rem;
+        max-height: 200px;
+      }
+      .cardlet-img {
+        height: 2.8rem;
+        margin-bottom: 0.3rem;
+      }
+      .cardlet-btn {
+        padding: 0.3rem 0.7rem;
+        font-size: 0.85rem;
+      }
+    }
+    </style>
 <style>
 
 .cardlet-container {

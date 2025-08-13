@@ -1,15 +1,17 @@
 <script lang="ts">
   import { fly } from 'svelte/transition';
+  import { base } from '$app/paths';
+  let homeHref = base + '/';
   // You can add form logic here later
 </script>
 
 <svelte:head>
   <title>Contact | KaiiDesu</title>
-  <link rel="icon" href="/static/favicon.png" />
+
 </svelte:head>
 
 <section class="contact-section">
-  <a href="/" class="shadow__btn home-btn" in:fly={{ y: 40, duration: 500, delay: 100 }}>Back to Home</a>
+  <a href={homeHref} class="shadow__btn home-btn" in:fly={{ y: 40, duration: 500, delay: 100 }}>Back to Home</a>
   <h1 class="contact-title" in:fly={{ y: 40, duration: 500, delay: 200 }}>Contact Me</h1>
   <p class="contact-desc" in:fly={{ y: 40, duration: 500, delay: 300 }}>Let's work together! Fill out the form below or reach out via email.</p>
   <form class="contact-form" in:fly={{ y: 40, duration: 500, delay: 400 }}>
@@ -138,4 +140,34 @@
   background: #008cff;
   color: #fff;
 }
+  @media (max-width: 700px) {
+    .contact-section {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+    .contact-title {
+      font-size: 1.5rem;
+    }
+    .contact-desc {
+      font-size: 1rem;
+      padding: 0 0.5rem;
+    }
+    .contact-form {
+      padding: 1rem 0.5rem;
+      max-width: 98vw;
+    }
+  }
+  @media (max-width: 480px) {
+    .contact-section {
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+    }
+    .contact-form {
+      padding: 0.5rem 0.25rem;
+      font-size: 0.95rem;
+    }
+    .contact-title {
+      font-size: 1.1rem;
+    }
+  }
 </style>

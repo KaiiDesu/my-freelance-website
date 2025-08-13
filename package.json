@@ -4,9 +4,13 @@
 	"version": "0.0.1",
 	"type": "module",
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 	"homepage": "https://github.com/KaiiDesu/my-freelance-website"
 >>>>>>> 2db121b (Initial commit)
+=======
+	"homepage": "https://kaiidesu.github.io/my-freelance-website/",
+>>>>>>> ad4a268 (Mobile Accessibility)
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
@@ -24,9 +28,14 @@
 		"build-storybook": "storybook build"
 =======
 		"build-storybook": "storybook build",
+<<<<<<< HEAD
 		"predeploy": "npm run build",
   		"deploy": "gh-pages -d public"
 >>>>>>> 2db121b (Initial commit)
+=======
+		"predeploy": "npm run build && node postbuild-fix.cjs",
+		"deploy": "gh-pages -d build --dotfiles"
+>>>>>>> ad4a268 (Mobile Accessibility)
 	},
 	"devDependencies": {
 		"@chromatic-com/storybook": "^4.1.0",
@@ -39,6 +48,7 @@
 		"@storybook/addon-vitest": "^9.1.2",
 		"@storybook/sveltekit": "^9.1.2",
 		"@sveltejs/adapter-auto": "^6.0.0",
+		"@sveltejs/adapter-static": "^3.0.9",
 		"@sveltejs/kit": "^2.22.0",
 		"@sveltejs/vite-plugin-svelte": "^6.0.0",
 		"@tailwindcss/vite": "^4.0.0",

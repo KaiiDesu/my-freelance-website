@@ -1,5 +1,7 @@
 <script lang="ts">
   import { fly, fade } from 'svelte/transition';
+  import { base } from '$app/paths';
+  let contactHref = base + '/contact';
 </script>
 
 <section class="hero-section">
@@ -18,7 +20,7 @@
 <style>
 =======
   <div class="sp" in:fly={{ y: 20, delay: 400, duration: 600 }}>
-  <a href="/contact" class="sparkle-button" style="text-decoration:none;">
+    <a href={contactHref} class="sparkle-button" style="text-decoration:none;">
     <span class="spark"></span>
     <span class="backdrop"></span>
     <svg class="sparkle" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -177,6 +179,19 @@
 @media (min-width: 768px) {
   .hero-title {
     font-size: 3rem;
+  }
+}
+@media (max-width: 600px) {
+  .hero-section {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+  .hero-title {
+    font-size: 1.5rem;
+  }
+  .hero-desc {
+    font-size: 1rem;
+    padding: 0 0.5rem;
   }
 }
 .hero-title-accent {
