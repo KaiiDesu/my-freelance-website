@@ -3,7 +3,11 @@
   export let menuItems = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '#about' },
+<<<<<<< HEAD
     { name: 'Contact', href: '#contact' }
+=======
+  { name: 'Contact', href: '/contact' }
+>>>>>>> 2db121b (Initial commit)
   ];
 </script>
 

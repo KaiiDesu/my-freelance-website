@@ -3,6 +3,10 @@
 	"private": true,
 	"version": "0.0.1",
 	"type": "module",
+<<<<<<< HEAD
+=======
+	"homepage": "https://github.com/KaiiDesu/my-freelance-website"
+>>>>>>> 2db121b (Initial commit)
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
@@ -16,7 +20,13 @@
 		"test": "npm run test:unit -- --run && npm run test:e2e",
 		"test:e2e": "playwright test",
 		"storybook": "storybook dev -p 6006",
+<<<<<<< HEAD
 		"build-storybook": "storybook build"
+=======
+		"build-storybook": "storybook build",
+		"predeploy": "npm run build",
+  		"deploy": "gh-pages -d public"
+>>>>>>> 2db121b (Initial commit)
 	},
 	"devDependencies": {
 		"@chromatic-com/storybook": "^4.1.0",
@@ -38,6 +48,10 @@
 		"eslint-config-prettier": "^10.0.1",
 		"eslint-plugin-storybook": "^9.1.2",
 		"eslint-plugin-svelte": "^3.0.0",
+<<<<<<< HEAD
+=======
+		"gh-pages": "^6.3.0",
+>>>>>>> 2db121b (Initial commit)
 		"globals": "^16.0.0",
 		"playwright": "^1.53.0",
 		"prettier": "^3.4.2",
