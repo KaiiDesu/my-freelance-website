@@ -11,7 +11,7 @@
 </svelte:head>
 
 <section class="contact-section">
-  <a href={homeHref} class="shadow__btn home-btn" in:fly={{ y: 40, duration: 500, delay: 100 }}>Back to Home</a>
+  <a href={homeHref} class="shadow__btn" in:fly={{ y: 40, duration: 500, delay: 100 }}>Back to Home</a>
   <h1 class="contact-title" in:fly={{ y: 40, duration: 500, delay: 200 }}>Contact Me</h1>
   <p class="contact-desc" in:fly={{ y: 40, duration: 500, delay: 300 }}>Let's work together! Fill out the form below or reach out via email.</p>
   <form class="contact-form" in:fly={{ y: 40, duration: 500, delay: 400 }}>
@@ -24,7 +24,7 @@
     <label for="message">Message</label>
     <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
 
-    <button class="shadow__btn" type="submit">Send Message</button>
+  <button class="shadow__btn send-btn" type="submit">Send Message</button>
   </form>
   <div class="contact-info" in:fly={{ y: 40, duration: 500, delay: 500 }}>
     <p>Email: <a href="mailto:klloydadvincula@gmail.com">klloydadvincula@gmail.com</a></p>
@@ -154,7 +154,19 @@
     }
     .contact-form {
       padding: 1rem 0.5rem;
-      max-width: 98vw;
+      max-width: 75vw;
+    }
+    .send-btn {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .shadow__btn {
+      max-width: 60vw;
+    }
+
+    .send-btn {
+      max-width: 100vw;
     }
   }
   @media (max-width: 480px) {
@@ -165,6 +177,11 @@
     .contact-form {
       padding: 0.5rem 0.25rem;
       font-size: 0.95rem;
+    }
+    .send-btn {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
     }
     .contact-title {
       font-size: 1.1rem;

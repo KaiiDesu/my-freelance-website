@@ -2,19 +2,10 @@
   import { fly } from 'svelte/transition';
   import { base } from '$app/paths';
   import { onMount } from 'svelte';
-  export let menuItems;
-  menuItems = [
+  export let menuItems = [
     { name: 'Home', href: base + '/' },
     { name: 'About', href: '#about' },
-<<<<<<< HEAD
-<<<<<<< HEAD
-    { name: 'Contact', href: '#contact' }
-=======
-  { name: 'Contact', href: '/contact' }
->>>>>>> 2db121b (Initial commit)
-=======
     { name: 'Contact', href: base + '/contact' }
->>>>>>> ad4a268 (Mobile Accessibility)
   ];
   let mobileOpen = false;
   function toggleMobile() { mobileOpen = !mobileOpen; }

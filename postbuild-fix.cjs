@@ -27,10 +27,36 @@ function walk(dir) {
   });
 }
 
-// 1. Rename _app to app_
-if (fs.existsSync(oldDir)) {
-  fs.renameSync(oldDir, newDir);
+
+// 1. Rename _app to app_ (with Windows fallback)
+function copyDir(src, dest) {
+  if (!fs.existsSync(dest)) fs.mkdirSync(dest);
+  fs.readdirSync(src).forEach(entry => {
+    const srcPath = path.join(src, entry);
+    const destPath = path.join(dest, entry);
+    if (fs.statSync(srcPath).isDirectory()) {
+      copyDir(srcPath, destPath);
+    } else {
+      fs.copyFileSync(srcPath, destPath);
+    }
+  });
 }
+
+if (fs.existsSync(oldDir)) {
+  try {
+    fs.renameSync(oldDir, newDir);
+  } catch (err) {
+    if (err.code === 'EPERM' || err.code === 'EACCES') {
+      // Fallback: copy then remove
+      copyDir(oldDir, newDir);
+      fs.rmSync(oldDir, { recursive: true, force: true });
+      console.log('Rename failed, fallback to copy/delete for _app → app_');
+    } else {
+      throw err;
+    }
+  }
+}
+
 // 2. Replace all references in build output
 walk(buildDir);
 

@@ -1,7 +1,4 @@
 @import 'tailwindcss';
-<<<<<<< HEAD
-=======
-
 /* Custom Scrollbar Styles */
 ::-webkit-scrollbar {
 	width: 12px;
@@ -24,4 +21,3 @@ html {
 	scrollbar-width: thin;
 	scrollbar-color: #232323 #18181b;
 }
->>>>>>> 2db121b (Initial commit)
