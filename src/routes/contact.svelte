@@ -1,6 +1,6 @@
 <script lang="ts">
   import { fade, slide } from 'svelte/transition';
-  // You can add form logic here later
+
 </script>
 
 <section class="contact-section" in:fade={{ duration: 600 }} in:slide={{ duration: 600 }}>

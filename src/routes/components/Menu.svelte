@@ -4,7 +4,7 @@
   import { onMount } from 'svelte';
   export let menuItems = [
     { name: 'Home', href: base + '/' },
-    { name: 'About', href: '#about' },
+    { name: 'Pricing', href: '#pricing' },
     { name: 'Contact', href: base + '/contact' }
   ];
   let mobileOpen = false;

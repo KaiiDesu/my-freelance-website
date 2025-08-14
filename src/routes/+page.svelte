@@ -7,7 +7,7 @@
   import { fly } from 'svelte/transition';
   import { base } from '$app/paths';
 
-  // Responsive: mobile detection
+  
   let isMobile = false;
   let exampleImg = base + '/example.jpg';
 
@@ -17,7 +17,7 @@
     window.addEventListener('resize', checkMobile);
   }
 
-  // Svelte action for scroll-based fade/translate animation
+  
   function scrollFade(node: HTMLElement, params = { delay: 0 }) {
     let timeout;
     const handleIntersect = (entries: IntersectionObserverEntry[]) => {

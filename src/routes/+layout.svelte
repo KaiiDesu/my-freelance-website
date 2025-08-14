@@ -10,10 +10,10 @@
 	let progressBar: HTMLDivElement;
 	let timeout: ReturnType<typeof setTimeout>;
 	let navigationStart = 0;
-	const MIN_DISPLAY_TIME = 800; // ms
+	const MIN_DISPLAY_TIME = 800;
 	let isDelaying = false;
 
-	// Export a custom goto for use in buttons
+	
 	export async function goto(href: string, opts?: any) {
 		if (isDelaying) return;
 		isDelaying = true;
@@ -31,7 +31,7 @@
 		isDelaying = false;
 	}
 
-	// Intercept all link clicks (runes-compatible)
+	
 	if (typeof window !== 'undefined') {
 		let handler: any = null;
 		handler = (e: MouseEvent) => {
