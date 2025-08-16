@@ -29,9 +29,11 @@ export const POST: RequestHandler = async ({ request }) => {
       return new Response(JSON.stringify({ error: 'Email service not configured' }), { status: 500 });
     }
 
+    const fromAddress = process.env.CONTACT_FROM_ADDRESS || TO_ADDRESS;
+
     const mail = {
       to: TO_ADDRESS,
-      from: TO_ADDRESS,
+      from: fromAddress,
       replyTo: email,
       subject: `Website contact from ${name} <${email}>`,
       text: `Name: ${name}\nEmail: ${email}\n\n${message}`,

@@ -17,9 +17,9 @@
 		"test": "npm run test:unit -- --run && npm run test:e2e",
 		"test:e2e": "playwright test",
 		"storybook": "storybook dev -p 6006",
-	"build-storybook": "storybook build",
-	"predeploy": "npm run build && node postbuild-fix.cjs",
-	"deploy": "gh-pages -d build --dotfiles"
+		"build-storybook": "storybook build",
+		"predeploy": "npm run build && node postbuild-fix.cjs",
+		"deploy": "gh-pages -d build --dotfiles"
 	},
 	"devDependencies": {
 		"@chromatic-com/storybook": "^4.1.0",
@@ -33,6 +33,7 @@
 		"@storybook/sveltekit": "^9.1.2",
 		"@sveltejs/adapter-auto": "^6.0.0",
 		"@sveltejs/adapter-static": "^3.0.9",
+		"@sveltejs/adapter-vercel": "^4.0.5",
 		"@sveltejs/kit": "^2.22.0",
 		"@sveltejs/vite-plugin-svelte": "^6.0.0",
 		"@tailwindcss/vite": "^4.0.0",
@@ -42,7 +43,7 @@
 		"eslint-config-prettier": "^10.0.1",
 		"eslint-plugin-storybook": "^9.1.2",
 		"eslint-plugin-svelte": "^3.0.0",
-	"gh-pages": "^6.3.0",
+		"gh-pages": "^6.3.0",
 		"globals": "^16.0.0",
 		"playwright": "^1.53.0",
 		"prettier": "^3.4.2",
@@ -59,8 +60,8 @@
 		"vitest-browser-svelte": "^0.1.0"
 	},
 	"dependencies": {
+		"@sendgrid/mail": "^8.1.5",
 		"framer-motion": "^12.23.12",
-		"styled-components": "^6.1.19",
-		"@sendgrid/mail": "^8.7.0"
+		"styled-components": "^6.1.19"
 	}
 }
