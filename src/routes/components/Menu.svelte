@@ -3,8 +3,6 @@
   import { base } from '$app/paths';
   import { onMount } from 'svelte';
   export let menuItems = [
-    { name: 'Home', href: base + '/' },
-    { name: 'Pricing', href: '#pricing' },
     { name: 'Contact', href: base + '/contact' }
   ];
   let mobileOpen = false;

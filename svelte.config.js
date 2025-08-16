@@ -15,6 +15,14 @@ const config = {
 		paths: {
 			base: '/my-freelance-website'
 		},
+		prerender: {
+			// When prerender finds links to fragment IDs that don't exist it fails the build by default.
+			// Handle them here: return 'warn' to emit a warning instead of throwing.
+			handleMissingId: ({ path, id }) => {
+				console.warn(`prerender: missing id="${id}" referenced from ${path}`);
+				return 'warn';
+			}
+		},
 	}
 };
 

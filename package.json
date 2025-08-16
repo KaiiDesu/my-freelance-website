@@ -60,6 +60,7 @@
 	},
 	"dependencies": {
 		"framer-motion": "^12.23.12",
-		"styled-components": "^6.1.19"
+		"styled-components": "^6.1.19",
+		"@sendgrid/mail": "^8.7.0"
 	}
 }
