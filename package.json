@@ -3,9 +3,6 @@
 	"private": true,
 	"version": "0.0.1",
 	"type": "module",
-	"engines": {
-		"node": "^18.0.0 || ^20.0.0"
-	},
 	"homepage": "https://kaiidesu.github.io/my-freelance-website/",
 	"scripts": {
 		"dev": "vite dev",
@@ -36,7 +33,7 @@
 		"@storybook/sveltekit": "^9.1.2",
 		"@sveltejs/adapter-auto": "^6.0.0",
 		"@sveltejs/adapter-static": "^3.0.9",
-		"@sveltejs/adapter-vercel": "^4.0.5",
+		
 		"@sveltejs/kit": "^2.22.0",
 		"@sveltejs/vite-plugin-svelte": "^6.0.0",
 		"@tailwindcss/vite": "^4.0.0",
@@ -63,7 +60,6 @@
 		"vitest-browser-svelte": "^0.1.0"
 	},
 	"dependencies": {
-		"@sendgrid/mail": "^8.1.5",
 		"framer-motion": "^12.23.12",
 		"styled-components": "^6.1.19"
 	}

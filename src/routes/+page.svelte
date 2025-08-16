@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Hero from './components/Hero.svelte';
+  import Hero from './components/hero.svelte';
   import About from './components/about.svelte';
   import Menu from './components/Menu.svelte';
   import SciFiBackground from './components/SciFiBackground.svelte';
