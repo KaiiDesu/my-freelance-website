@@ -1,8 +1,6 @@
 import type { RequestHandler } from '@sveltejs/kit';
 import sgMail from '@sendgrid/mail';
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY || '');
-
 const TO_ADDRESS = process.env.CONTACT_TO_ADDRESS || process.env.VITE_CONTACT_TO_ADDRESS || '';
 
 function isValidEmail(email: string) {
@@ -24,10 +22,14 @@ export const POST: RequestHandler = async ({ request }) => {
       return new Response(JSON.stringify({ error: 'Invalid email or target not configured' }), { status: 400 });
     }
 
-    if (!process.env.SENDGRID_API_KEY) {
+    const apiKey = process.env.SENDGRID_API_KEY;
+    if (!apiKey) {
       console.error('SENDGRID_API_KEY not set');
       return new Response(JSON.stringify({ error: 'Email service not configured' }), { status: 500 });
     }
+
+    // set API key at request time to avoid build-time validation errors
+    sgMail.setApiKey(apiKey);
 
     const fromAddress = process.env.CONTACT_FROM_ADDRESS || TO_ADDRESS;
 
@@ -47,6 +49,11 @@ export const POST: RequestHandler = async ({ request }) => {
     console.error('SendGrid error', err);
     return new Response(JSON.stringify({ error: 'Failed to send message' }), { status: 500 });
   }
+};
+
+export const GET: RequestHandler = async () => {
+  // Respond to GET requests so prerender/build crawling doesn't receive 405 from POST-only endpoint.
+  return new Response(null, { status: 204 });
 };
 
 export const prerender = false;
