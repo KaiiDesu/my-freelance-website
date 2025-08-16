@@ -2,41 +2,7 @@
   import { fly } from 'svelte/transition';
   import { base } from '$app/paths';
   let homeHref = base + '/';
-
-  let nameEl: HTMLInputElement | null = null;
-  let emailEl: HTMLInputElement | null = null;
-  let messageEl: HTMLTextAreaElement | null = null;
-  let submitting = false;
-  let success = false;
-  let error: string | null = null;
-
-  async function handleSubmit() {
-    if (!nameEl || !emailEl || !messageEl) return;
-    submitting = true;
-    success = false;
-    error = null;
-
-    try {
-      const res = await fetch('/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: nameEl.value, email: emailEl.value, message: messageEl.value })
-      });
-
-      const body = await res.json();
-      if (!res.ok) throw new Error(body?.error || 'Failed to send');
-
-      success = true;
-      nameEl.value = '';
-      emailEl.value = '';
-      messageEl.value = '';
-    } catch (err: any) {
-      error = err?.message || 'An error occurred';
-    } finally {
-      submitting = false;
-    }
-  }
-
+ 
 </script>
 
 <svelte:head>
@@ -60,22 +26,17 @@
         <p class="contact-desc-form">Let's work together! Fill out the form below or reach out via email.</p>
       </div>
 
-      <form class="contact-form card" in:fly={{ y: 40, duration: 500, delay: 400 }} on:submit|preventDefault={handleSubmit}>
+      <form class="contact-form card" in:fly={{ y: 40, duration: 500, delay: 400 }}>
       <label for="name">Name</label>
-      <input bind:this={nameEl} type="text" id="name" name="name" placeholder="Your Name" required />
+      <input type="text" id="name" name="name" placeholder="Your Name" required />
 
       <label for="email">Email</label>
-      <input bind:this={emailEl} type="email" id="email" name="email" placeholder="Your Email" required />
+      <input type="email" id="email" name="email" placeholder="Your Email" required />
 
       <label for="message">Message</label>
-      <textarea bind:this={messageEl} id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+      <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
 
-      <button class="shadow__btn send-btn" type="submit" disabled={submitting}>{submitting ? 'Sending…' : 'Send Message'}</button>
-      {#if success}
-        <div class="contact-success">Message sent — thank you!</div>
-      {:else if error}
-        <div class="contact-error">{error}</div>
-      {/if}
+      <button class="shadow__btn send-btn" type="submit">Send Message</button>
       </form>
     </div>
 
@@ -94,6 +55,7 @@
     </div>
   </div>
   <div class="contact-info" in:fly={{ y: 40, duration: 500, delay: 500 }}>
+    <p>Email: <a href="mailto:klloydadvincula@gmail.com">klloydadvincula@gmail.com</a></p>
     <p>Or reach out on social media below:</p>
     <div class="contact-socials">
       <a href="https://www.facebook.com/kaiirodesuu/" aria-label="Facebook">Facebook</a>
@@ -240,9 +202,6 @@
 .contact-info{ text-align:center; color:#d1d5db; margin-top:2rem; }
 .contact-socials{ display:flex; gap:1rem; justify-content:center; margin-top:0.5rem }
 .contact-socials a{ background:#232323; padding:.5rem 1rem; border-radius:9999px; color:#fff; text-decoration:none }
-
-.contact-success { color: #16a34a; font-weight:600; margin-top:0.5rem }
-.contact-error { color: #ef4444; font-weight:600; margin-top:0.5rem }
 
 @media (max-width:900px){
   .contact-header-row{ grid-template-columns:1fr; text-align:center }
