@@ -18,6 +18,16 @@ const config = {
 				console.warn(`prerender: missing id="${id}" referenced from ${path}`);
 				return 'warn';
 			}
+			,
+			// Don't fail the build on HTTP errors like 405 for routes that intentionally reject crawlers.
+			handleHttpError: ({ path, status }) => {
+				if (status === 405) {
+					console.warn(`prerender: received ${status} for ${path} — continuing`);
+					return 'warn';
+				}
+				// default behaviour: throw (or you can return 'warn' for other statuses)
+				return 'fail';
+			}
 		},
 	}
 };
